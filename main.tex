@@ -1,0 +1,25 @@
+\documentclass[10pt,a4paper]{article}
+
+% Configuration
+\input{config/packages}
+\input{config/colors}
+\input{config/styles}
+\input{config/personal}
+
+\begin{document}
+
+% Sidebar (colonne gauche)
+\input{sections/sidebar}
+\hfill
+% Contenu principal (colonne droite)
+\begin{minipage}[t]{0.75\textwidth}
+    \vspace{0pt}
+    
+    \input{sections/header}
+    \input{sections/experience}
+    \input{sections/education}
+    \input{sections/projects}
+
+\end{minipage}
+
+\end{document}

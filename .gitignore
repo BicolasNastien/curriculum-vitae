@@ -1,0 +1,5 @@
+*.log
+*.out
+*.aux
+photo.png
+config/personal.tex

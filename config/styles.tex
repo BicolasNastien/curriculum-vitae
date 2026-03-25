@@ -1,0 +1,45 @@
+% ============================================================
+% STYLE DES SECTIONS
+% ============================================================
+\titleformat{\section}
+  {\large\bfseries\color{maincolor}}
+  {}{0em}{}[\color{maincolor}\titlerule]
+\titlespacing*{\section}{0pt}{5pt}{6pt}
+
+\titleformat{\subsection}
+  {\normalsize\bfseries\color{secondcolor}}
+  {}{0em}{}
+\titlespacing*{\subsection}{0pt}{5pt}{4pt}
+
+% ============================================================
+% COMMANDES CV
+% ============================================================
+
+% Expérience détaillée : \cvitem{Poste}{Dates}{Lieu}{Contenu}
+\newcommand{\cvitem}[4]{
+  {\large\textbf{\color{secondcolor}#1}} \hfill {\small\textit{\color{lightgray}#2}}\\[-2pt]
+  {\small\textit{\color{accentcolor}#3}}
+  \vspace{2pt}
+  #4
+  \vspace{3pt}
+}
+
+% Ligne courte : \cvitemshort{Titre}{Institution | Année}
+\newcommand{\cvitemshort}[2]{
+  \textbf{\color{secondcolor}#1} \hfill {\small\textit{\color{lightgray}#2}}
+  \vspace{1pt}
+}
+
+% Compétence avec icône
+\newcommand{\skill}[1]{
+  \textcolor{maincolor}{\faIcon{check-circle}} \textbf{#1}
+}
+
+% ============================================================
+% LIENS
+% ============================================================
+\hypersetup{
+    colorlinks=true,
+    linkcolor=maincolor,
+    urlcolor=maincolor,
+}

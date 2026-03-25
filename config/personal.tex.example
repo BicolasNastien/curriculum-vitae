@@ -1,0 +1,10 @@
+\newcommand{\myname}{Prénom NOM}
+\newcommand{\mytitle}{Développeur Web}
+\newcommand{\myaddress}{Ville - Département (00)}
+\newcommand{\myphone}{00 00 00 00 00}
+\newcommand{\myemail}{email@example.com}
+\newcommand{\mylinkedinurl}{https://www.linkedin.com/in/votre-profil/}
+\newcommand{\mylinkedinname}{prénom nom}
+\newcommand{\mygithuburl}{https://github.com/votre-pseudo}
+\newcommand{\mygithubname}{votre-pseudo}
+\newcommand{\myphoto}{photo.png}

@@ -1,0 +1,33 @@
+% ============================================================
+% FOND COLORÉ SIDEBAR
+% ============================================================
+\begin{tikzpicture}[remember picture,overlay]
+\fill[sidebarcolor] (current page.north west) rectangle ([xshift=4.9cm]current page.south west);
+\end{tikzpicture}
+
+\begin{minipage}[t]{0.20\textwidth}
+    \vspace{0pt}
+
+    \input{sections/sidebar/photo}
+
+    \vspace{2pt}
+
+    \input{sections/sidebar/contact}
+
+    \vspace{18pt}
+
+    \input{sections/sidebar/skills}
+
+    \vspace{10pt}
+
+    \input{sections/sidebar/qualities}
+
+    \vspace{10pt}
+
+    \input{sections/sidebar/languages}
+
+    \vspace{18pt}
+
+    \input{sections/sidebar/interests}
+
+\end{minipage}
