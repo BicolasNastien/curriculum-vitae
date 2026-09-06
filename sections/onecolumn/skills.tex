@@ -1,0 +1,24 @@
+% ============================================================
+% COMPÉTENCES — VARIANTE UNE COLONNE
+% ============================================================
+% Mêmes compétences que sections/sidebar/skills.tex, mais à plat : une ligne
+% par catégorie plutôt qu'une liste à puces, la pleine largeur rendant les
+% listes verticales inutilement longues.
+%
+% Règle tenue ici : chaque techno listée est adossée à quelque chose de
+% vérifiable dans le corps du CV. Go n'apparaît que dans les projets
+% personnels, d'où la mention explicite ; Node, qui n'était rattaché à aucune
+% expérience, a été retiré. Mercure est un transport temps réel, il est classé
+% en Outils et non en Données.
+%
+% Les langues sont rattachées ici plutôt qu'à une section dédiée en fin de CV :
+% deux lignes de contenu ne justifiaient pas un titre avec filet, et le tableau
+% se lit comme un inventaire de ce que la personne sait faire — les langues y
+% ont leur place.
+\section*{\faIcon{tools} Compétences}
+
+\cvskillline{Back-end}{PHP / Symfony / API Platform, Go \textit{(projets personnels)}}
+\cvskillline{Front-end}{React, Vue, React Native, Twig}
+\cvskillline{Données}{SQL, SQLite, Doctrine, API REST}
+\cvskillline{Outils}{Docker, Git (GitHub / GitLab), CI/CD, PHPStan, PHPUnit, Mercure, Linux}
+\cvskillline{Langues}{Français — natif, Anglais — niveau B2}

@@ -1,0 +1,28 @@
+% ============================================================
+% ICÔNE OMARCHY — SIDEBAR
+% ============================================================
+% Le dessin lui-même est dans config/icon.tex (partagé avec la variante une
+% colonne, où il sert de filigrane centré sur chaque page).
+%
+% Placement : l'icône est simplement dans le flux, encadrée par les deux \vfill
+% de sections/sidebar.tex, ce qui la centre dans l'espace libre sous le contenu
+% de la sidebar. Volontairement PAS d'overlay « remember picture » : celui-ci
+% demanderait deux passes de compilation, alors que le README documente un
+% simple « pdflatex main.tex » — au premier passage l'icône serait mal placée.
+%
+% \omarchyiconsize : côté de l'icône (carrée). Borné par \linewidth, la largeur
+% utile de la sidebar.
+\newlength{\omarchyiconsize}
+\setlength{\omarchyiconsize}{3.4cm}
+
+% Teinte très diluée : filigrane à peine perceptible. On mélange la couleur au
+% fond de la sidebar plutôt que d'utiliser « opacity », ce qui donne exactement
+% le même rendu ici (le fond est un aplat uni) mais reste une couleur opaque
+% ordinaire — pas de canal de transparence, donc aucun risque à l'impression ni
+% dans les lecteurs PDF qui aplatissent mal les calques.
+% \omarchyiconmix : part de maincolor, en pourcentage (0 = invisible).
+\newcommand{\omarchyiconmix}{12}
+
+{\centering
+\omarchyicon{\omarchyiconsize}{maincolor!\omarchyiconmix!sidebarcolor}
+\par}

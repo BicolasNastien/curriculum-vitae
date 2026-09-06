@@ -4,7 +4,7 @@
 \titleformat{\section}
   {\large\bfseries\color{maincolor}}
   {}{0em}{}[\color{maincolor}\titlerule]
-\titlespacing*{\section}{0pt}{5pt}{6pt}
+\titlespacing*{\section}{0pt}{4pt}{3pt}
 
 \titleformat{\subsection}
   {\normalsize\bfseries\color{secondcolor}}
@@ -15,19 +15,62 @@
 % COMMANDES CV
 % ============================================================
 
+% Puce des listes du corps du CV.
+% Passer par une commande plutôt que d'écrire le label en dur dans chaque
+% \begin{itemize} permet à une variante de la redéfinir globalement : la
+% variante une colonne remplace l'icône FontAwesome par un vrai caractère de
+% puce, que les extracteurs de texte (pdftotext, ATS) savent replacer dans le
+% flux — l'icône, elle, est rejetée en fin de bloc et vient se coller au
+% texte de la puce suivante.
+\newcommand{\cvbullet}{\textcolor{maincolor}{\tiny\faIcon{circle}}}
+
+% Sous-puce de détail (deuxième niveau des listes d'expérience). Même logique
+% que \cvbullet : passer par une commande laisse une variante ajuster la
+% taille globalement — la variante une colonne les compose plus petit pour
+% tenir sur une page.
+\newcommand{\cvsub}[1]{{\small\color{detailcolor}\itshape #1}}
+
+% Espace laissé sous chaque entrée : c'est lui qui sépare visuellement deux
+% expériences (ou deux projets) consécutifs.
+\newlength{\cvitemsep}
+\setlength{\cvitemsep}{5pt}
+
 % Expérience détaillée : \cvitem{Poste}{Dates}{Lieu}{Contenu}
 \newcommand{\cvitem}[4]{
   {\large\textbf{\color{secondcolor}#1}} \hfill {\small\textit{\color{lightgray}#2}}\\[-2pt]
   {\small\textit{\color{accentcolor}#3}}
-  \vspace{2pt}
+  \vspace{0.5pt}
   #4
-  \vspace{3pt}
+  \par\vspace{\cvitemsep}
+}
+
+% Ligne « Environnement » : \cvenv{Techno, Techno, ...}
+% Barre verticale à gauche dont la hauteur s'adapte au texte (1 ou N lignes).
+\newsavebox{\cvenvbox}
+\newcommand{\cvenv}[1]{%
+  \par\vspace{0.5pt}\noindent
+  \savebox{\cvenvbox}{%
+    \parbox{\dimexpr\linewidth-8pt\relax}{%
+      \small\textbf{\color{secondcolor}Environnement :} \textbf{\color{detailcolor}#1}%
+    }%
+  }%
+  \textcolor{maincolor}{\rule[-\dp\cvenvbox]{1.6pt}{\dimexpr\ht\cvenvbox+\dp\cvenvbox\relax}}%
+  \hspace{6pt}\usebox{\cvenvbox}\par
+}
+
+% Projet personnel : \cvproject{Nom}{Stack}
+% Contrairement à \cvitem, le nom et la stack partagent une seule ligne : un
+% projet n'a ni dates ni lieu à afficher, la ligne « lieu » de \cvitem restait
+% donc vide et coûtait une ligne par projet.
+\newcommand{\cvproject}[2]{%
+  {\large\textbf{\color{secondcolor}#1}}\hfill{\small\textit{\color{accentcolor}#2}}%
+  \par\vspace{0.5pt}%
 }
 
 % Ligne courte : \cvitemshort{Titre}{Institution | Année}
 \newcommand{\cvitemshort}[2]{
   \textbf{\color{secondcolor}#1} \hfill {\small\textit{\color{lightgray}#2}}
-  \vspace{1pt}
+  \vspace{1.5pt}
 }
 
 % Compétence avec icône

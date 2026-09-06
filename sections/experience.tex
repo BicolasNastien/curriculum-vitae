@@ -1,55 +1,58 @@
+% ============================================================
+% EXPÉRIENCE PROFESSIONNELLE (partagé par les deux variantes)
+% ============================================================
+% Contrainte de rédaction : chaque sous-puce doit tenir sur UNE ligne dans la
+% variante une colonne (~145 caractères en \footnotesize sur 18,4 cm). C'est
+% cette discipline, et non le rognage des interlignes, qui fait tenir le CV sur
+% une seule page — une puce qui déborde d'un mot coûte une ligne entière.
 \section*{\faIcon{briefcase} Expérience Professionnelle}
 
 \cvitem{Développeur Web - Cebios}{2024 - Aujourd'hui}{Tarnos, Landes (40) - Télétravail}{
-\begin{itemize}[leftmargin=*, itemsep=1.5pt, topsep=2pt, label={\textcolor{maincolor}{\scriptsize\faIcon{circle}}}]
-    \item Développement et gestion de projet en autonomie complète
-    \begin{itemize}[leftmargin=10pt, itemsep=0pt, topsep=0pt, label={}]
-        \item {\small\color{gray}\itshape Recueil des besoins et suivi client tout au long du cycle de développement dans un esprit AGILE}
-        \item {\small\color{gray}\itshape Mise en place d'un système de traçabilité des actions effectuées sur la plateforme}
-        \item {\small\color{gray}\itshape Authentification unifiée via cookie cross-domain sur une application multi-domaines}
-    \end{itemize}
+\cvenv{PHP, Symfony, API Platform, React, Twig, React Native, Docker, SQL, GitHub, Linux, Mac}
+\begin{itemize}[leftmargin=*, itemsep=0.5pt, topsep=1pt, label={\cvbullet}]
     \item Développement et déploiement d'applications SaaS
     \begin{itemize}[leftmargin=10pt, itemsep=0pt, topsep=0pt, label={}]
-        \item {\small\color{gray}\itshape Dockerisation et migration de projets Symfony 5 vers Symfony 7}
-        \item {\small\color{gray}\itshape Refactorisation de code en utilisant des patrons de conception}
+        \item \cvsub{CI bloquant la merge (lint, PHPStan, tests unitaires et fonctionnels) et déploiement automatisé remplaçant une procédure manuelle}
+        \item \cvsub{Migration Symfony 5 vers 8 en trois paliers (dépréciations, composants retirés, attributs PHP 8) et dockerisation des environnements}
+        \item \cvsub{Refonte de la couche métier (services, injection de dépendances) sortant la logique des contrôleurs, parties critiques mises sous tests}
     \end{itemize}
-    \item Conception d'applications mobiles Android et iOS
+    \item Conception d'applications mobiles Android et iOS (React Native)
     \begin{itemize}[leftmargin=10pt, itemsep=0pt, topsep=0pt, label={}]
-        \item {\small\color{gray}\itshape Optimisation des requêtes entre l'application mobile et l'API, réduisant les temps de réponse}
-        \item {\small\color{gray}\itshape Mise en place d'une BDD locale avec système personnalisé de migrations pour la persistance hors ligne des données utilisateurs avec synchronisation via API}
+        \item \cvsub{Réduction des appels réseau au lancement (regroupement d'endpoints, pagination) et suppression des requêtes N+1 côté API}
+        \item \cvsub{Persistance hors ligne SQLite avec migrations versionnées sur mesure, pour faire évoluer le schéma sans perte de données}
+        \item \cvsub{Synchronisation bidirectionnelle : file d'attente des modifications locales, rejeu à la reconnexion, résolution des conflits}
     \end{itemize}
     \item Développement Full Stack et visualisation de données
     \begin{itemize}[leftmargin=10pt, itemsep=0pt, topsep=0pt, label={}]
-        \item {\small\color{gray}\itshape Création d'un service d'export personnalisé (PDF, Word, Excel) et d'une bibliothèque de génération SVG pour rendu de graphiques côté serveur}
-        \item {\small\color{gray}\itshape Conception d'interfaces et agrégation de données pour exposition de statistiques}
-        \item {\small\color{gray}\itshape Modernisation UI : Passage de Twig à React}
+        \item \cvsub{Bibliothèque PHP d'export mutualisée (PDF, Word, Excel) sous une API unifiée, réutilisée sur plusieurs projets de l'entreprise}
+        \item \cvsub{Migration progressive de Twig vers React, écran par écran, sans interruption de service ni réécriture globale}
     \end{itemize}
 \end{itemize}
 }
 
 \cvitem{Développeur Web - Data Smart Process}{2023 - 2024}{Troyes, Aube (10)}{
-\begin{itemize}[leftmargin=*, itemsep=1.5pt, topsep=2pt, label={\textcolor{maincolor}{\scriptsize\faIcon{circle}}}]
-    \item Conception et déploiement d'IHM pour applications industrielles
+\cvenv{PHP, Symfony, API Platform, Mercure, Vue, API REST, SQL, Docker, GitLab, Linux, IA}
+\begin{itemize}[leftmargin=*, itemsep=0.5pt, topsep=1pt, label={\cvbullet}]
+    \item Interfaces pour applications industrielles (Vue.js)
     \begin{itemize}[leftmargin=10pt, itemsep=0pt, topsep=0pt, label={}]
-        \item {\small\color{gray}\itshape Amélioration de la productivité des utilisateurs grâce à des interfaces plus intuitives}
-    \end{itemize}
-    \item Développement front-end Vue.js et intégration API REST
-    \begin{itemize}[leftmargin=10pt, itemsep=0pt, topsep=0pt, label={}]
-        \item {\small\color{gray}\itshape Optimisation des interactions utilisateur et réduction des temps de chargement}
+        \item \cvsub{Refonte d'IHM métier pour opérateurs en environnement industriel : moins d'actions nécessaires aux tâches courantes}
     \end{itemize}
     \item Développement back-end Symfony / API Platform
     \begin{itemize}[leftmargin=10pt, itemsep=0pt, topsep=0pt, label={}]
-        \item {\small\color{gray}\itshape Mise en place de filtres dans une architecture multi-tenant pour sécuriser l'accès aux données clients}
-        \item {\small\color{gray}\itshape Intégration du protocole Mercure pour l'exposition des données en temps réel}
-        \item {\small\color{gray}\itshape Sécurisation et optimisation des flux de données entre applications et bases de données alimentées après traitement vidéo par un modèle d'IA}
+        \item \cvsub{Architecture multi-tenant : filtres Doctrine et voters garantissant le cloisonnement des données entre clients}
+        \item \cvsub{Intégration de Mercure pour la diffusion temps réel des données vers les clients en push}
+    \end{itemize}
+    \item Exploitation des sorties d'un modèle d'analyse vidéo
+    \begin{itemize}[leftmargin=10pt, itemsep=0pt, topsep=0pt, label={}]
+        \item \cvsub{Interfaces de visualisation des résultats produits par les modèles de l'équipe IA}
+        \item \cvsub{Retraitement, normalisation et contrôles de cohérence des sorties de modèle, écartant les données aberrantes avant affichage}
     \end{itemize}
 \end{itemize}
 }
 
-\cvitem{Chef d'Équipe Combat Génie — Armée de Terre}{2018 - 2023}{Castelsarrasin, Tarn-et-Garonne (82)}{
-\begin{itemize}[leftmargin=*, itemsep=1pt, topsep=2pt, label={\textcolor{maincolor}{\scriptsize\faIcon{circle}}}]
-    \item Management d'une équipe de 40 personnes au quotidien
-    \item Opérations extérieures : Côte d'Ivoire, Mali, ÉAU, Liban
-    \item Prise de décision et adaptation en environnement complexe
+\cvitem{Chef d'Équipe - Unité de Combat du Génie - Armée de Terre}{2018 - 2023}{Castelsarrasin, Tarn-et-Garonne (82)}{
+\begin{itemize}[leftmargin=*, itemsep=0.5pt, topsep=1pt, label={\cvbullet}]
+    \item Encadrement d'une équipe de 40 personnes : organisation du travail, formation et évaluation des nouveaux arrivants
+    \item Conduite de missions en opérations extérieures (Côte d'Ivoire, Mali, ÉAU, Liban) : préparation et coordination
 \end{itemize}
 }

@@ -1,13 +1,18 @@
+% Pas de \\ final dans la minipage : il ajouterait une ligne vide complète
+% (~\baselineskip) entre le titre et le Profil.
 \begin{tikzpicture}
 \node[inner sep=0pt, outer sep=0pt] (name) {
     \begin{minipage}{\textwidth}
-        {\LARGE\bfseries\color{maincolor} \myname}\\[2pt]
-        {\large\color{secondcolor} \mytitle}
+        {\LARGE\bfseries\color{maincolor} \myname \ - \mytitle}
     \end{minipage}
 };
 \end{tikzpicture}
 
-\vspace{4pt}
+%\section*{\faIcon{user} Profil}
+%Mon naturel \textbf{\color{maincolor}calme} et \textbf{\color{maincolor}patient} m'aide à aborder les problématiques techniques avec \textbf{\color{maincolor}méthode}.\\[2pt]
+%\textbf{\color{maincolor}Attentif} à la propreté de ce que je conçois, je soigne la \textbf{\color{maincolor}lisibilité du code} et sa \textbf{\color{maincolor}maintenabilité}.\\[2pt]
+%\textbf{\color{maincolor}Curieux} et \textbf{\color{maincolor}autonome}, j'aime monter en compétences et explorer de nouveaux sujets techniques lorsque les besoins du projet l'exigent.
 
 \section*{\faIcon{user} Profil}
-L'intérêt que je porte à ce métier réside dans la quête du défi technique et le devoir d'apprendre tout au long de sa carrière.
+Développeur full-stack \textbf{\color{maincolor}PHP/Symfony} et \textbf{\color{maincolor}React}, 3 ans d'expérience en SaaS, applications industrielles et applications mobiles.
+Ancien chef d'équipe dans l'Armée de Terre, je suis autonome du recueil du besoin jusqu'au déploiement.

@@ -1,0 +1,33 @@
+% ============================================================
+% ICÔNE OMARCHY (dessin partagé)
+% ============================================================
+% Icône vectorisée depuis /usr/share/omarchy/icon.png : le dessin est une
+% grille de 15 x 15 cases de 20 px, chaque case étant uniformément pleine ou
+% vide. On la redessine donc exactement, en 13 rectangles, sans dépendre d'un
+% fichier externe : l'icône suit la couleur du CV et reste nette à toute taille.
+%
+% Les rectangles sont dans UN SEUL \fill : un unique remplissage évite les
+% filets blancs que certains lecteurs PDF affichent entre deux aplats adjacents.
+%
+% \omarchyicon{<côté>}{<couleur>} produit le tikzpicture seul, sans placement :
+% c'est à l'appelant de le positionner (dans le flux pour la sidebar, en fond de
+% page pour la variante une colonne).
+\newcommand{\omarchyicon}[2]{%
+  \begin{tikzpicture}[x=\dimexpr#1/15\relax, y=\dimexpr#1/15\relax]
+    % Une unité = une case de la grille.
+    \fill[#2]
+        (0,14) rectangle (15,15)
+        (0,0) rectangle (1,14)
+        (7,12) rectangle (8,14)
+        (14,0) rectangle (15,14)
+        (2,12) rectangle (7,13)
+        (11,12) rectangle (13,13)
+        (2,2) rectangle (3,12)
+        (12,2) rectangle (13,12)
+        (1,7) rectangle (2,8)
+        (3,2) rectangle (12,3)
+        (7,0) rectangle (8,2)
+        (1,0) rectangle (7,1)
+        (9,0) rectangle (14,1);
+  \end{tikzpicture}%
+}

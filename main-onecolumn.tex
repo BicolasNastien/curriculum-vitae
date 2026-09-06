@@ -1,0 +1,30 @@
+% ============================================================
+% CV — VARIANTE UNE COLONNE
+% ============================================================
+% Version sobre destinée aux grands groupes et aux dépôts via ATS : pas de
+% sidebar colorée, pas de photo, pas de colonne étroite. Tout le contenu suit
+% un unique flux de texte pleine largeur, dans l'ordre de lecture attendu par
+% un recruteur (identité, profil, compétences, expérience, formation).
+%
+% Le contenu factuel (expérience, formation, projets) est partagé avec
+% main.tex : ces fichiers-là ne sont jamais dupliqués.
+\documentclass[10pt,a4paper]{article}
+
+% Configuration
+\input{config/packages}
+\input{config/colors}
+\input{config/icon}
+\input{config/styles}
+\input{config/layout/onecolumn}   % après styles : redéfinit \cvitemsep
+\input{config/personal}
+
+\begin{document}
+
+\input{sections/onecolumn/header}
+\input{sections/onecolumn/skills}
+\input{sections/experience}
+\input{sections/education}
+\input{sections/projects}
+\input{sections/onecolumn/extras}
+
+\end{document}

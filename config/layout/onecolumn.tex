@@ -1,0 +1,90 @@
+% ============================================================
+% MISE EN PAGE — VARIANTE « UNE COLONNE » (grands groupes / ATS)
+% ============================================================
+% Marges resserrées mais au-dessus du seuil de rognage des imprimantes
+% bureautiques (~5 mm) : c'est le plancher tenable pour rester sur une page.
+\geometry{left=1.3cm, right=1.3cm, top=0.7cm, bottom=0.6cm}
+
+% Titres de section pleine largeur : un filet horizontal continu structure la
+% lecture verticale, seul repère de hiérarchie une fois la sidebar supprimée.
+\titlespacing*{\section}{0pt}{4pt}{2pt}
+
+% Séparation entre deux entrées. Volontairement plus serrée que ce que la
+% pleine largeur appellerait : la densité prime ici, et les filets de section
+% suffisent à découper la lecture.
+\setlength{\cvitemsep}{2pt}
+
+% Interlignage resserré. ATTENTION : ce fichier est calibré au plus juste — le
+% CV tient sur une page, mais sans marge. Détendre l'interlignage à 0,93, ou
+% remonter une marge verticale d'un millimètre, suffit à le faire déborder
+% (vérifié). Toute puce ajoutée doit donc en remplacer une autre, et chaque
+% puce doit tenir sur UNE ligne (cf. l'en-tête de sections/experience.tex).
+% Contrôle : ./build.sh onecolumn puis « pdfinfo cv-onecolumn.pdf | grep Pages ».
+\linespread{0.92}\selectfont
+
+% ------------------------------------------------------------
+% FILIGRANE : ICÔNE OMARCHY CENTRÉE SUR CHAQUE PAGE
+% ------------------------------------------------------------
+% eso-pic dépose un contenu en fond de CHAQUE page au moment du « shipout » :
+% le filigrane est donc répété automatiquement, sans avoir à savoir combien de
+% pages fait le CV ni où tombent les coupures. Contrairement à un overlay TikZ
+% « remember picture », cela ne demande pas de seconde passe de compilation.
+\usepackage{eso-pic}
+
+% \omarchywatermarksize : côté du filigrane (carré). Nettement plus grand que
+% l'icône de la sidebar : au centre d'une page blanche pleine largeur, une
+% petite icône passerait pour une tache plutôt que pour un fond.
+\newlength{\omarchywatermarksize}
+\setlength{\omarchywatermarksize}{11cm}
+
+% Même parti pris que dans la sidebar : plutôt que « opacity », on mélange la
+% couleur au blanc du papier. Le rendu est identique sur un fond uni, mais la
+% couleur reste opaque et ordinaire — pas de canal de transparence, donc aucun
+% risque à l'impression ni dans les lecteurs PDF qui aplatissent mal les
+% calques. C'est aussi ce qui garantit que le texte par-dessus reste noir franc.
+% \omarchywatermarkmix : part de maincolor, en pourcentage (0 = invisible).
+% Volontairement très bas : le filigrane doit se deviner, pas se lire.
+\newcommand{\omarchywatermarkmix}{4}
+
+% \makebox(0,0){...} centre la boîte sur le point visé (le centre de la page),
+% en largeur comme en hauteur : c'est l'idiome « picture » attendu par eso-pic.
+% Fond (« BG ») et non premier plan : le texte du CV passe par-dessus.
+\AddToShipoutPictureBG{%
+  \AtPageCenter{%
+    \makebox(0,0){%
+      \omarchyicon{\omarchywatermarksize}{maincolor!\omarchywatermarkmix!white}%
+    }%
+  }%
+}
+
+% ------------------------------------------------------------
+% COMMANDES SPÉCIFIQUES À LA VARIANTE UNE COLONNE
+% ------------------------------------------------------------
+
+% Puce textuelle plutôt qu'icône FontAwesome. Visuellement quasi identique,
+% mais c'est un vrai caractère du flux de texte : pdftotext — et donc les ATS,
+% cible de cette variante — le restituent à sa place, au lieu de rejeter les
+% icônes en fin de bloc où elles viennent se coller au texte suivant.
+\renewcommand{\cvbullet}{\textcolor{maincolor}{\small\textbullet}}
+
+% Sous-puces de détail composées un cran plus petit qu'en variante sidebar :
+% sur 18 cm de largeur, \footnotesize reste parfaitement lisible, et la plupart
+% des détails passent alors sur une seule ligne au lieu de deux.
+\renewcommand{\cvsub}[1]{{\footnotesize\color{detailcolor}\itshape #1}}
+
+% Ligne de compétences : \cvskillline{Catégorie}{éléments}
+% Le libellé est aligné sur une largeur fixe pour que toutes les catégories
+% forment une colonne nette, le reste coulant en paragraphe pendu.
+% Les \strut fixent la même hauteur de première ligne dans les deux boîtes :
+% sans eux, les deux colonnes n'ont pas la même hauteur d'ascendante et
+% « minipage[t] » cale les libellés une demi-ligne au-dessus des valeurs.
+\newcommand{\cvskillline}[2]{%
+  \par\noindent
+  \begin{minipage}[t]{2.6cm}\raggedright\strut\textbf{\color{maincolor}#1}\end{minipage}%
+  \hspace{4pt}%
+  \begin{minipage}[t]{\dimexpr\linewidth-2.6cm-4pt\relax}\raggedright\strut\color{secondcolor}#2\end{minipage}%
+  \par\vspace{3pt}%
+}
+
+% Séparateur des lignes de contact / d'énumérations en ligne.
+\newcommand{\cvsep}{\hspace{6pt}\textcolor{maincolor}{\small\textbullet}\hspace{6pt}}

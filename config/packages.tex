@@ -5,6 +5,7 @@
 \usepackage[T1]{fontenc}
 \usepackage[french]{babel}
 \usepackage{geometry}
+\usepackage{ragged2e}
 \usepackage{enumitem}
 \setlist[itemize]{label={}, leftmargin=8pt}
 \usepackage{titlesec}
@@ -16,10 +17,12 @@
 \usepackage{tikz}
 \usepackage{paracol}
 \usepackage[default]{lato}
+\usepackage{qrcode}
 
 % ============================================================
 % PAGE
 % ============================================================
-\geometry{left=0.4cm, right=0.4cm, top=0cm, bottom=0.1cm}
+% Les marges ne sont PAS fixées ici : elles dépendent de la variante de CV et
+% sont définies dans config/layout/<variante>.tex.
 \setlength{\parindent}{0pt}
 \pagestyle{empty}

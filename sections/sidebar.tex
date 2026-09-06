@@ -1,12 +1,22 @@
 % ============================================================
 % FOND COLORÉ SIDEBAR
 % ============================================================
+% Collé à la minipage (pas de ligne vide) : sinon ce tikzpicture forme un
+% paragraphe à part et consomme une ligne complète (~12pt) en haut de page.
 \begin{tikzpicture}[remember picture,overlay]
 \fill[sidebarcolor] (current page.north west) rectangle ([xshift=4.9cm]current page.south west);
-\end{tikzpicture}
-
-\begin{minipage}[t]{0.20\textwidth}
+\end{tikzpicture}%
+% Hauteur fixée avec position interne « s » (stretch) : les \vfill plus bas
+% peuvent alors se détendre, ce qui centre l'icône Omarchy dans l'espace libre
+% restant sous le contenu — sans overlay ni seconde passe de compilation.
+% La hauteur disponible est \textheight moins \topskip : « top=0cm » dans la
+% géométrie, c'est \topskip qui fait office de marge haute et décale d'autant
+% la première ligne (donc ces deux minipages) vers le bas.
+\begin{minipage}[t][\dimexpr\textheight-\topskip\relax][s]{0.20\textwidth}
     \vspace{0pt}
+    % Texte en drapeau : la colonne est trop étroite pour une justification
+    % propre (mots étirés, césures disgracieuses).
+    \RaggedRight
 
     \input{sections/sidebar/photo}
 
@@ -14,20 +24,31 @@
 
     \input{sections/sidebar/contact}
 
-    \vspace{18pt}
+    \vspace{10pt}
 
     \input{sections/sidebar/skills}
 
-    \vspace{10pt}
+    \vspace{6pt}
 
     \input{sections/sidebar/qualities}
 
-    \vspace{10pt}
+    \vspace{6pt}
 
     \input{sections/sidebar/languages}
 
-    \vspace{18pt}
+    \vspace{10pt}
 
     \input{sections/sidebar/interests}
+
+    % Les deux \vfill encadrant l'icône absorbent tout l'espace restant et la
+    % centrent verticalement. Étant en glue infinie, ils sont seuls à s'étirer :
+    % les espacements des listes ci-dessus gardent leur valeur naturelle.
+    \vfill
+    \input{sections/sidebar/icon}
+    \vfill
+    % \end{minipage} exécute un \unskip, qui supprimerait le \vfill ci-dessus
+    % s'il terminait la boîte (l'icône se retrouverait collée en bas). Cette
+    % \hbox vide, de dimensions nulles et sans interligne, le protège.
+    \nointerlineskip\hbox{}%
 
 \end{minipage}

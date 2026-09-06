@@ -3,3 +3,5 @@
 *.aux
 photo.png
 config/personal.tex
+build/
+cv-*.pdf

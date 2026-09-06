@@ -1,3 +1,11 @@
+\def\mybirthyear{1995}
+\def\mybirthmonth{3}
+\def\mybirthday{15}
+
+\newcommand{\myage}{%
+  \the\numexpr\year-\mybirthyear-\ifnum\month<\mybirthmonth\relax 1\else\ifnum\month=\mybirthmonth\relax\ifnum\day<\mybirthday\relax 1\else0\fi\else0\fi\fi\relax
+}
+
 \newcommand{\myname}{Prénom NOM}
 \newcommand{\mytitle}{Développeur Web}
 \newcommand{\myaddress}{Ville - Département (00)}

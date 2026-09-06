@@ -1,0 +1,20 @@
+% ============================================================
+% MISE EN PAGE — VARIANTE « SIDEBAR » (deux colonnes)
+% ============================================================
+% Marges quasi nulles : le fond coloré de la sidebar est un aplat qui part du
+% bord gauche de la page, le contenu doit donc pouvoir s'en approcher.
+\geometry{left=0.4cm, right=0.4cm, top=0cm, bottom=0.1cm}
+
+% ------------------------------------------------------------
+% DENSITÉ DU CONTENU
+% ------------------------------------------------------------
+% La colonne principale ne fait que 0,75\textwidth : les sous-puces de détail
+% y débordaient sur deux lignes chacune, ce qui poussait la fin du CV sur une
+% seconde page. Or les deux minipages (sidebar + contenu) forment UNE ligne
+% horizontale insécable : dès qu'elle dépasse la hauteur de page, LaTeX la
+% reporte en bloc et laisse la page 1 entièrement vide. Il ne s'agit donc pas
+% d'un débordement cosmétique — c'est ce qui cassait le PDF.
+\renewcommand{\cvsub}[1]{{\footnotesize\color{detailcolor}\itshape #1}}
+
+% Interlignage resserré, même parti pris que la variante une colonne.
+\linespread{0.98}\selectfont
